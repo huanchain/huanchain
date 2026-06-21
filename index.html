@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuanChain Blockchain Ecosystem Hub</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Glow Orbs -->
+    <div class="glass-bg"></div>
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+
+    <!-- Main Layout Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-cubes logo-icon"></i>
+                    <span>HuanChain Hub</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Ecosystem</div>
+                <a href="#" class="nav-item active" data-tab="overview">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="dapps">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>DApps Hub</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="stats">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Network Stats</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-bar">
+                    <span class="status-indicator online"></span>
+                    <span>HuanChain Mainnet Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-bar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search transactions, blocks, addresses..." id="search-input">
+                </div>
+                
+                <div class="wallet-badge" id="wallet-connect-btn">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span id="wallet-address-text">Connect Wallet</span>
+                </div>
+            </header>
+
+            <!-- Content Body -->
+            <div class="content-body">
+                
+                <!-- Overview Tab Content -->
+                <div class="tab-content active" id="tab-overview">
+                    <div class="doc-container">
+                        <div class="card">
+                            <div class="doc-header">
+                                <div class="doc-title-bar">
+                                    <i class="fa-regular fa-file-lines"></i>
+                                    <span>README.md</span>
+                                </div>
+                                <div class="doc-actions">
+                                    <button class="btn-icon-only" title="Reload README" id="reload-readme-btn">
+                                        <i class="fa-solid fa-rotate-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="markdown-body" id="readme-content">
+                                <div class="loading-spinner">
+                                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                    <span>Fetching & rendering README.md...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DApps Hub Tab Content -->
+                <div class="tab-content" id="tab-dapps">
+                    <div class="dapps-layout">
+                        <!-- DApps Sidebar -->
+                        <aside class="dapp-sidebar">
+                            <h3>Workspace</h3>
+                            <div class="dapp-menu">
+                                <button class="dapp-menu-btn active" data-module="swap">
+                                    <i class="fa-solid fa-arrow-right-arrow-left"></i> Token Swap
+                                </button>
+                                <button class="dapp-menu-btn" data-module="faucet">
+                                    <i class="fa-solid fa-faucet-drip"></i> Faucet
+                                </button>
+                                <button class="dapp-menu-btn" data-module="creator">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Token Creator
+                                </button>
+                                <button class="dapp-menu-btn" data-module="mining">
+                                    <i class="fa-solid fa-microchip"></i> Cloud Miner
+                                </button>
+                                <button class="dapp-menu-btn" data-module="ide">
+                                    <i class="fa-solid fa-code"></i> Smart Contract IDE
+                                </button>
+                                <button class="dapp-menu-btn" data-module="scan">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i> Explorer (Scan)
+                                </button>
+                            </div>
+                        </aside>
+
+                        <!-- DApps Viewport -->
+                        <div class="dapp-viewport card">
+                            
+                            <!-- Swap Module -->
+                            <div class="dapp-module active" id="module-swap">
+                                <h2>HuanChain Swap</h2>
+                                <p class="module-desc">Instantly swap ERC-20 utility tokens on the HuanChain decentralized exchange.</p>
+                                
+                                <div class="swap-box">
+                                    <div class="swap-input-container">
+                                        <label>From</label>
+                                        <div class="swap-input-row">
+                                            <input type="number" id="swap-from-amount" value="1.0" min="0.000001" step="0.1">
+                                            <select id="swap-from-token">
+                                                <option value="HUAN">HUAN</option>
+                                                <option value="ETH">ETH</option>
+                                                <option value="USDT">USDT</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="swap-divider">
+                                        <button class="swap-switch-btn" id="swap-switch-btn">
+                                            <i class="fa-solid fa-arrows-up-down"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="swap-input-container" style="margin-top: 10px;">
+                                        <label>To (Estimated)</label>
+                                        <div class="swap-input-row">
+                                            <input type="number" id="swap-to-amount" value="2500" readonly>
+                                            <select id="swap-to-token">
+                                                <option value="USDT" selected>USDT</option>
+                                                <option value="HUAN">HUAN</option>
+                                                <option value="ETH">ETH</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="swap-meta">
+                                        <div class="meta-row">
+                                            <span>Price</span>
+                                            <span id="swap-meta-rate">1 HUAN = 2,500 USDT</span>
+                                        </div>
+                                        <div class="meta-row">
+                                            <span>Slippage Tolerance</span>
+                                            <span>0.5%</span>
+                                        </div>
+                                        <div class="meta-row">
+                                            <span>Minimum Received</span>
+                                            <span id="swap-meta-min">2,487.5 USDT</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary btn-block" id="swap-submit-btn">Swap Tokens</button>
+                                </div>
+                            </div>
+
+                            <!-- Faucet Module -->
+                            <div class="dapp-module" id="module-faucet">
+                                <h2>Ecosystem Faucet</h2>
+                                <p class="module-desc">Request test tokens to develop, test, and deploy smart contracts on our test network.</p>
+                                
+                                <div class="faucet-box">
+                                    <div class="faucet-input-group">
+                                        <label for="faucet-address">Recipient Wallet Address</label>
+                                        <input type="text" id="faucet-address" placeholder="0x... or connect wallet" value="">
+                                    </div>
+                                    <button class="btn btn-primary" id="faucet-claim-btn">Request 10.00 HUAN</button>
+                                    <div class="faucet-cooldown" id="faucet-status-msg"></div>
+                                </div>
+                            </div>
+
+                            <!-- Token Creator Module -->
+                            <div class="dapp-module" id="module-creator">
+                                <h2>Token Creator</h2>
+                                <p class="module-desc">Launch your own ERC-20 utility tokens on the HuanChain blockchain with a custom name, symbol, decimals, and initial supply.</p>
+                                
+                                <div class="token-creator-box">
+                                    <form id="token-creator-form">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="creator-name">Token Name</label>
+                                                <input type="text" id="creator-name" placeholder="e.g. HuanChain Gold" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="creator-symbol">Token Symbol</label>
+                                                <input type="text" id="creator-symbol" placeholder="e.g. HUANG" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="creator-decimals">Decimals</label>
+                                                <input type="number" id="creator-decimals" value="18" min="0" max="18" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="creator-supply">Initial Supply</label>
+                                                <input type="number" id="creator-supply" placeholder="e.g. 1000000" min="1" required>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Create Utility Token</button>
+                                    </form>
+
+                                    <div class="deployed-tokens-container">
+                                        <h3>My Deployed Tokens</h3>
+                                        <table class="tokens-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Symbol</th>
+                                                    <th>Initial Supply</th>
+                                                    <th>Decimals</th>
+                                                    <th>Contract Address</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="deployed-tokens-list">
+                                                <!-- Populated dynamically via JS -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mining Module -->
+                            <div class="dapp-module" id="module-mining">
+                                <h2>CPU Cloud Miner Simulator</h2>
+                                <p class="module-desc">Mine HUAN blocks locally using your device's idle compute threads to earn test net validation rewards.</p>
+                                
+                                <div class="mining-box">
+                                    <div class="mining-status-card">
+                                        <div class="mining-power-gauge">
+                                            <i class="fa-solid fa-microchip" id="mining-icon"></i>
+                                            <div class="hashrate" id="mining-hashrate-val">0.00 KH/s</div>
+                                        </div>
+                                        <div class="mining-stats">
+                                            <div class="meta-row">
+                                                <span>Active Threads</span>
+                                                <span id="mining-threads-val">0 / 8</span>
+                                            </div>
+                                            <div class="meta-row">
+                                                <span>Mined HUAN Balance</span>
+                                                <span id="mining-balance-val" class="text-secondary font-bold">0.000000 HUAN</span>
+                                            </div>
+                                            <div class="meta-row">
+                                                <span>Block Rewards Rate</span>
+                                                <span>0.0005 HUAN / sec</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mining-controls">
+                                        <button class="btn btn-success" id="mining-toggle-btn">Start Mining Simulator</button>
+                                        <div class="form-group" style="margin-bottom: 0;">
+                                            <select id="mining-thread-select" style="padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: hsla(220, 25%, 5%, 0.4); color: white; cursor: pointer;">
+                                                <option value="1">1 CPU Thread</option>
+                                                <option value="2">2 CPU Threads</option>
+                                                <option value="4" selected>4 CPU Threads</option>
+                                                <option value="8">8 CPU Threads</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- IDE Module -->
+                            <div class="dapp-module" id="module-ide">
+                                <h2>Smart Contract IDE</h2>
+                                <p class="module-desc">Compile and deploy Solidity smart contracts directly in your browser on the HuanChain Virtual Machine (HVM).</p>
+                                
+                                <div class="ide-layout">
+                                    <div class="ide-editor-container">
+                                        <div class="editor-header">
+                                            <span><i class="fa-solid fa-file-code"></i> ERC20Token.sol</span>
+                                            <button class="btn btn-success btn-sm" id="ide-deploy-btn">Compile & Deploy</button>
+                                        </div>
+                                        <textarea id="ide-editor" spellcheck="false">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract HuanChainToken is ERC20 {
+    constructor() ERC20("HuanChain Gold", "HUANG") {
+        _mint(msg.sender, 1000000 * 10**decimals());
+    }
+}</textarea>
+                                    </div>
+                                    <div class="ide-console-container">
+                                        <div class="console-header">Console Output</div>
+                                        <div class="console-body" id="ide-console-val">> Compiler: Solc 0.8.20 initialized. Click "Compile & Deploy" to start.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Explorer (Scan) Module -->
+                            <div class="dapp-module" id="module-scan">
+                                <h2>HuanChain Explorer (Scan)</h2>
+                                <p class="module-desc">Monitor blocks, gas usage, validator slots, and recent token transaction status on the network.</p>
+                                
+                                <div class="scan-grid">
+                                    <div class="scan-list-container">
+                                        <h3>Latest Blocks</h3>
+                                        <div class="scan-list" id="scan-blocks-list">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                    </div>
+                                    <div class="scan-list-container">
+                                        <h3>Recent Transactions</h3>
+                                        <div class="scan-list" id="scan-txs-list">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Stats Tab Content -->
+                <div class="tab-content" id="tab-stats">
+                    <h2>Ecosystem Network Stats</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">Real-time diagnostics and network telemetry for HuanChain Chain.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-cube"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Block Height</span>
+                                <span class="stat-value" id="stats-blocks">1,204,912</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-gauge"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Gas Price</span>
+                                <span class="stat-value">12.5 Gwei</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Transaction Count</span>
+                                <span class="stat-value" id="stats-txs">8,419,250</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-microchip"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Network Hashrate</span>
+                                <span class="stat-value">4.29 MH/s</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-showcase" style="margin-top: 50px;">
+                        <h2>Core Platform Features</h2>
+                        <div class="grid-3">
+                            <div class="feature-box">
+                                <i class="fa-solid fa-bolt"></i>
+                                <h3>High Performance</h3>
+                                <p>HuanChain delivers sub-second block times and highly competitive transaction throughput using optimized validation slots.</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <h3>EVM Compatibility</h3>
+                                <p>Full compatibility with solidity smart contracts, Hardhat, Remix, Web3.js, and popular browser wallets like Metamask.</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fa-solid fa-network-wired"></i>
+                                <h3>Decentralized Ecosystem</h3>
+                                <p>Democratic governance, community-operated mining hubs, decentralized exchange swap pools, and open-source infrastructure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js" defer></script>
+</body>
+</html>
