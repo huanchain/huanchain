@@ -129,6 +129,8 @@ HuanChain leverages cutting-edge autonomous engineering models to build, maintai
 * [**Claude AI**](https://claude.ai/new) – Advanced logic reasoning and context modeling helper.
 * [**ChatGPT**](https://openai.com/chatgpt/) – Broad multitasking and creative prompt modeling assistant.
 * [**Replit AI**](https://replit.com) – Cloud-hosted IDE featuring visual sandbox environments.
+
+* [**Skills AI**](https://www.skills.sh) – Skills AI Hub.
 </details>
 
 ---
